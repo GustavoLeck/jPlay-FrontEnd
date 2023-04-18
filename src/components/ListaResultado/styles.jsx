@@ -16,7 +16,7 @@ export const ColunaLista = styled.td`
   background: #e2e0d9;
 `;
 
-export const ContainerGeral = styled.div`
+export const ContainerGeral = styled.table`
   width: 100%;
   height: 60%;
   // border: 3px solid blue;
