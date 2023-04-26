@@ -12,6 +12,7 @@ import {
   ContainerGeral,
   Dropdown,
   ContainerLabel,
+  Opcao,
 } from "./styles";
 
 function FormularioBusca() {
@@ -66,12 +67,12 @@ function FormularioBusca() {
             Estrelas
             <Dropdown name="Estrela">
               Estrelas:
-              <option>{""}</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <Opcao>{""}</Opcao>
+              <Opcao>1</Opcao>
+              <Opcao>2</Opcao>
+              <Opcao>3</Opcao>
+              <Opcao>4</Opcao>
+              <Opcao>5</Opcao>
             </Dropdown>
           </ContainerLabel>
         </ContainerCampos>
