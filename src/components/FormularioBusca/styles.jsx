@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const ContainerCampos = styled.div`
-  // border: 3px solid red;
+export const ContainerCampos = styled.form`
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
 `;
 
 export const Botao = styled.div`
@@ -20,7 +19,6 @@ export const Botao = styled.div`
 `;
 
 export const ContainerBotao = styled.div`
-  // border: 3px solid red;
   height: 35px;
   padding: 2%;
   display: flex;
@@ -30,8 +28,8 @@ export const ContainerGeral = styled.div`
   background: #e2e0d9;
   width: 100%;
   display: flex;
-  align-items: center;
   margin-top: 3%;
   box-shadow: 0px 0px 8px 2px #8e8777;
   border-radius: 5px;
+  padding: 1%;
 `;
