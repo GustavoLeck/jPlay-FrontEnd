@@ -10,6 +10,8 @@ import {
   Botao,
   ContainerBotao,
   ContainerGeral,
+  Dropdown,
+  ContainerLabel,
 } from "./styles";
 
 function FormularioBusca() {
@@ -41,6 +43,10 @@ function FormularioBusca() {
     setFiltro(entity);
   }
 
+  function handleMouseOver() {
+    console.log("Teste");
+  }
+
   useEffect(() => {
     consultMusicas();
   }, []);
@@ -56,17 +62,26 @@ function FormularioBusca() {
           <CampoBusca Nome="Musica"></CampoBusca>
           <CampoBusca Nome="Artista"></CampoBusca>
           <CampoBusca Nome="Ano"></CampoBusca>
-          <CampoBusca Nome="Estrela"></CampoBusca>
+          <ContainerLabel>
+            Estrelas
+            <Dropdown name="Estrela">
+              Estrelas:
+              <option>{""}</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Dropdown>
+          </ContainerLabel>
         </ContainerCampos>
         <ContainerBotao>
-          <Botao onClick={handleFiltro}>Pesquisar!</Botao>
+          <Botao onMouseOver={handleMouseOver} onClick={handleFiltro}>
+            Pesquisar!
+          </Botao>
         </ContainerBotao>
       </ContainerGeral>
-      <div
-        onClick={() => {
-          console.log(getContador);
-        }}
-      >
+      <div>
         <h5>
           Musicas Encontradas:
           {" " + getContador}
