@@ -26,10 +26,24 @@ export const ContainerBotao = styled.div`
 
 export const ContainerGeral = styled.div`
   background: #e2e0d9;
-  width: 100%;
+  // width: 100%;
   display: flex;
   margin-top: 3%;
   box-shadow: 0px 0px 8px 2px #8e8777;
   border-radius: 5px;
   padding: 1%;
+  // justify-content: center;
+`;
+
+export const Dropdown = styled.select`
+  width: 50px;
+  display: flex;
+  aligin-items: center;
+  border-radius: 5px;
+`;
+
+export const ContainerLabel = styled.label`
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
 `;
