@@ -1,7 +1,11 @@
 import { ContainerGeral, LinhaLista, ColunaLista } from "./styles";
 import React from "react";
+import { useContext } from "react";
+import { AppContext } from "../../AppContext";
 
-function ListaResultado({ valores }) {
+function ListaResultado() {
+  const { getMusicasFiltradas } = useContext(AppContext);
+
   function generateString(lista) {
     let texto = "";
     lista.map((elemento) => {
@@ -9,26 +13,29 @@ function ListaResultado({ valores }) {
     });
     return texto;
   }
+
+  function handleClick() {
+    console.log(getMusicasFiltradas);
+  }
+
   return (
     <ContainerGeral>
       <tbody>
         <LinhaLista>
-          <ColunaLista>Musica</ColunaLista>
+          <ColunaLista onClick={handleClick}>Musica</ColunaLista>
           <ColunaLista>Artista</ColunaLista>
           <ColunaLista>Ano</ColunaLista>
           <ColunaLista>Genero</ColunaLista>
           <ColunaLista>Estilos</ColunaLista>
-          <ColunaLista>Album</ColunaLista>
         </LinhaLista>
-        {valores.map((valor) => {
+        {getMusicasFiltradas.map((musica) => {
           return (
-            <LinhaLista key={valor.id}>
-              <ColunaLista>{valor.Musica}</ColunaLista>
-              <ColunaLista>{valor.Artista}</ColunaLista>
-              <ColunaLista>{valor.Ano}</ColunaLista>
-              <ColunaLista>{generateString(valor.Generos)}</ColunaLista>
-              <ColunaLista>{generateString(valor.Estilos)}</ColunaLista>
-              <ColunaLista>Teste</ColunaLista>
+            <LinhaLista key={musica.id}>
+              <ColunaLista>{musica.Musica}</ColunaLista>
+              <ColunaLista>{musica.Artista}</ColunaLista>
+              <ColunaLista>{musica.Ano}</ColunaLista>
+              <ColunaLista>{generateString(musica.Generos)}</ColunaLista>
+              <ColunaLista>{generateString(musica.Estilos)}</ColunaLista>
             </LinhaLista>
           );
         })}
