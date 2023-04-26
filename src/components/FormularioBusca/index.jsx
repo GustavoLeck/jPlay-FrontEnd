@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useRef, useContext } from "react";
 import ListaResultado from "../ListaResultado";
+import CampoBusca from "../CampoBusca";
+import axios from "axios";
+
+import { AppContext } from "../../AppContext";
 
 import {
   ContainerCampos,
@@ -8,58 +11,55 @@ import {
   ContainerBotao,
   ContainerGeral,
 } from "./styles";
-import CampoBusca from "../CampoBusca";
-import axios from "axios";
 
 function FormularioBusca() {
-  const [getMusicas, setMusicas] = React.useState([]);
-  const [dataPesquisa, setPesquisa] = React.useState([]);
-  const [dataContador, setContador] = React.useState(0);
+  const { getMusicasFiltradas, setMusicasFiltradas } = useContext(AppContext);
+
+  const [getFiltro, setFiltro] = useState({});
+  const valoresFiltro = useRef(null);
 
   async function consultMusicas() {
-    const response = await axios.get(`http://localhost:3050/api/musicas`, {
-      body: {},
+    const response = await axios.post(
+      `http://localhost:3050/api/musicas`,
+      getFiltro
+    );
+    console.log(getFiltro);
+    setMusicasFiltradas(response.data.Musicas);
+  }
+
+  function handleFiltro() {
+    let entity = {};
+    let inputs = Array.from(valoresFiltro.current);
+    inputs.map((e) => {
+      if (e.value !== "") {
+        setFiltro((entity[e.name] = e.value));
+      }
     });
-    // console.log(response);
-    setMusicas(response.data);
+    setFiltro(entity);
   }
 
   useEffect(() => {
     consultMusicas();
   }, []);
 
+  useEffect(() => {
+    consultMusicas();
+  }, [getFiltro]);
+
   return (
     <>
       <ContainerGeral>
-        <ContainerCampos>
-          <CampoBusca
-            onEdit={() => {
-              console.log(getMusicas);
-            }}
-            Nome="Nome"
-          ></CampoBusca>
-          <CampoBusca
-            onChange={() => {
-              console.log("Teste");
-            }}
-            Nome="Artista"
-          ></CampoBusca>
+        <ContainerCampos ref={valoresFiltro}>
+          <CampoBusca Nome="Musica"></CampoBusca>
+          <CampoBusca Nome="Artista"></CampoBusca>
           <CampoBusca Nome="Ano"></CampoBusca>
-          <CampoBusca Nome="Genêro"></CampoBusca>
-          <CampoBusca Nome="Estilo"></CampoBusca>
-          <CampoBusca Nome="Álbum"></CampoBusca>
+          <CampoBusca Nome="Estrela"></CampoBusca>
         </ContainerCampos>
         <ContainerBotao>
-          <Botao
-            onClick={() => {
-              console.log(getMusicas);
-            }}
-          >
-            Pesquisar!
-          </Botao>
+          <Botao onClick={handleFiltro}>Pesquisar!</Botao>
         </ContainerBotao>
       </ContainerGeral>
-      <ListaResultado valores={getMusicas}></ListaResultado>
+      <ListaResultado></ListaResultado>
     </>
   );
 }
