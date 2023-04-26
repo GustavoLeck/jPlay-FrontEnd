@@ -23,6 +23,7 @@ export const ContainerBotao = styled.div`
   height: 35px;
   padding: 2%;
   display: flex;
+  margin-left: 15%;
 `;
 
 export const ContainerGeral = styled.div`
@@ -33,7 +34,8 @@ export const ContainerGeral = styled.div`
   box-shadow: 0px 0px 8px 2px #8e8777;
   border-radius: 5px;
   padding: 1%;
-  // justify-content: center;
+  // display-wrap: wrap;
+  justify-content: center;
 `;
 
 export const Dropdown = styled.select`
@@ -46,7 +48,7 @@ export const Dropdown = styled.select`
 export const ContainerLabel = styled.label`
   display: flex;
   align-items: center;
-  margin-right: 5px;
+  margin-left: 3%;
 `;
 
 export const Opcao = styled.option``;
