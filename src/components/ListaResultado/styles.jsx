@@ -19,7 +19,6 @@ export const ColunaLista = styled.td`
 export const ContainerGeral = styled.table`
   width: 100%;
   height: 60%;
-  // border: 3px solid blue;
   margin-top: 3%;
   box-shadow: 0px 0px 8px 2px #8e8777;
 `;
