@@ -13,9 +13,11 @@ import {
 } from "./styles";
 
 function FormularioBusca() {
-  const { getMusicasFiltradas, setMusicasFiltradas } = useContext(AppContext);
+  const { getMusicasFiltradas, setMusicasFiltradas, getResponse } =
+    useContext(AppContext);
 
   const [getFiltro, setFiltro] = useState({});
+  const [getContador, setContador] = useState(0);
   const valoresFiltro = useRef(null);
 
   async function consultMusicas() {
@@ -24,6 +26,7 @@ function FormularioBusca() {
       getFiltro
     );
     console.log(getFiltro);
+    setContador(response.data.QuantidadeMusica);
     setMusicasFiltradas(response.data.Musicas);
   }
 
@@ -59,6 +62,16 @@ function FormularioBusca() {
           <Botao onClick={handleFiltro}>Pesquisar!</Botao>
         </ContainerBotao>
       </ContainerGeral>
+      <div
+        onClick={() => {
+          console.log(getContador);
+        }}
+      >
+        <h5>
+          Musicas Encontradas:
+          {" " + getContador}
+        </h5>
+      </div>
       <ListaResultado></ListaResultado>
     </>
   );
