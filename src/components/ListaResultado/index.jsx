@@ -25,6 +25,7 @@ function ListaResultado() {
           <ColunaLista onClick={handleClick}>Musica</ColunaLista>
           <ColunaLista>Artista</ColunaLista>
           <ColunaLista>Ano</ColunaLista>
+          <ColunaLista>Estrelas</ColunaLista>
           <ColunaLista>Genero</ColunaLista>
           <ColunaLista>Estilos</ColunaLista>
         </LinhaLista>
@@ -34,6 +35,7 @@ function ListaResultado() {
               <ColunaLista>{musica.Musica}</ColunaLista>
               <ColunaLista>{musica.Artista}</ColunaLista>
               <ColunaLista>{musica.Ano}</ColunaLista>
+              <ColunaLista>{musica.Estrela}</ColunaLista>
               <ColunaLista>{generateString(musica.Generos)}</ColunaLista>
               <ColunaLista>{generateString(musica.Estilos)}</ColunaLista>
             </LinhaLista>
