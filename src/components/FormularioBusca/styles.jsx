@@ -16,6 +16,7 @@ export const Botao = styled.div`
   width: 100px;
   color: #f6f6f6f6;
   border: 0px solid #f6f6f6f;
+  cursor: pointer;
 `;
 
 export const ContainerBotao = styled.div`
@@ -36,7 +37,7 @@ export const ContainerGeral = styled.div`
 `;
 
 export const Dropdown = styled.select`
-  width: 50px;
+  width: 30px;
   display: flex;
   aligin-items: center;
   border-radius: 5px;
@@ -47,3 +48,5 @@ export const ContainerLabel = styled.label`
   align-items: center;
   margin-right: 5px;
 `;
+
+export const Opcao = styled.option``;
