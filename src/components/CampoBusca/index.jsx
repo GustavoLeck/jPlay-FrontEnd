@@ -1,12 +1,10 @@
-import { Campo, Container, Texto } from "./styles";
+import { Campo, Container } from "./styles";
 
 function CampoBusca({ Nome }) {
   return (
     <Container>
-      <Texto>{Nome}: </Texto>
-      <Campo></Campo>
+      {Nome} : <Campo name={Nome}></Campo>
     </Container>
   );
 }
-
 export default CampoBusca;
